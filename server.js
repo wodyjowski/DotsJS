@@ -18,3 +18,4 @@ app.get('/', (req, res) => {
     res.render('index')
 });
 
+var server = app.listen(port, () => console.log(`App listening on port: ${port}!`));
