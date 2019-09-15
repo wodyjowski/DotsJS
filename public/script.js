@@ -1,36 +1,43 @@
 'use strict';
 
-let maxStars = 500;
-const stars = []
-
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-
-
-
-window.requestAnimationFrame(draw);
-
-function initStars()
-{
-    
-}
-
-
 class Star {
     constructor(x, y) {
       this.x = x;
       this.y = y;
       this.size = getRandomFloat(0.5, 5);
       this.speed = getRandomFloat(0.1, 1);
-
     }
 }
+
+
+
+let maxStars = 500;
+const stars = []
+
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+initStars();
+window.requestAnimationFrame(draw);
+
+
+function initStars()
+{
+    createStars(200);
+}
+
+function createStars() {
+    for (let index = 0; index < maxStars; index++) {
+        stars.push(new Star(getRandomX(), getRandomY()));
+    }
+}
+
 
 function addStars()
 {
     if(stars.length >= maxStars) return;
 
-    let random = getRandomInt(0, 10);
+    let random = getRandomInt(0, 3);
     
     for (let index = 0; index < random; index++) {
         stars.push(new Star(getRandomX(), 0));
